@@ -8,15 +8,18 @@ class BrailleTranslator
   end
 
   def linear_braille(stacked_braille)
-    braille_char_count = (stacked_braille.split[0].length)/2
     columns = stacked_braille.split("\n")
     braille_segments = []
-    braille_char_count.times do
+    braille_symbol_count(stacked_braille).times do
      columns.each do |string|
        braille_segments << [string.slice!(0..1)]
      end
    end
    braille_segments.join
+  end
+
+  def braille_symbol_count(stacked_braille)
+    (stacked_braille.split[0].length)/2
   end
 
 end

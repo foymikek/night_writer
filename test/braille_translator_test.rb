@@ -47,7 +47,8 @@ class BrailleTranslatorTest < Minitest::Test
 
   def test_braille_symbol_count
     braille_translator = BrailleTranslator.new
-    assert_equal 11, braille_translator.braille_symbol_count
+    input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
+    assert_equal 11, braille_translator.braille_symbol_count(input)
   end
 
 end
