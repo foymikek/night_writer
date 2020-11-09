@@ -7,8 +7,14 @@ class Translator
     @dictionary = Dictionary.new.braille_index
   end
 
-  def sentence_to_letters(sentence_str)
-    sentence_str.split(//)
+  def translate(input_message)
+    braille_columns(input_message)
+    stack_columns(input_message)
+    display_columns(input_message)
+  end
+
+  def braille_columns(input_message)
+    translate_sentence(sentence_to_letters(input_message)).transpose
   end
 
   def translate_sentence(letter_array)
@@ -21,10 +27,6 @@ class Translator
     @dictionary[eng_char_str]
   end
 
-  def braille_columns(input_message)
-    translate_sentence(sentence_to_letters(input_message)).transpose
-  end
-
   def stack_columns(input_message)
     braille_columns(input_message).map do |column|
       column.join(",") + "\n"
@@ -35,10 +37,8 @@ class Translator
     stack_columns(input_message).join("").gsub(",", "")
   end
 
-  def translate(input_message)
-    braille_columns(input_message)
-    stack_columns(input_message)
-    display_columns(input_message)
+  def sentence_to_letters(sentence_str)
+    sentence_str.split(//)
   end
 
 end

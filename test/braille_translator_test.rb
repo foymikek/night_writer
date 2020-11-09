@@ -37,4 +37,17 @@ class BrailleTranslatorTest < Minitest::Test
       }
     assert_equal expected, braille_translator.dictionary
   end
+
+  def test_linear_braille
+    braille_translator = BrailleTranslator.new
+    input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
+    expected = "0.00..0..0..0.0.0.0.0.0.0..00........000.00..00.0.000.0.0.0.00.0.."
+    assert_equal expected, braille_translator.linear_braille(input)
+  end
+
+  def test_braille_symbol_count
+    braille_translator = BrailleTranslator.new
+    assert_equal 11, braille_translator.braille_symbol_count
+  end
+
 end

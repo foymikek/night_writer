@@ -14,7 +14,7 @@ class BrailleFileIo
   end
 
   def organize_message
-    text = (BrailleFileIo.new.translate(@input))
-    text.scan(/.{1,80}/)+"\n"
+    BrailleFileIo.new.translate(@input).scan(/.{1,80}/)+"\n"
+    require "pry"; binding.pry
   end
 end

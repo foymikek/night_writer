@@ -8,9 +8,7 @@ class BrailleFileIoTest < Minitest::Test
     output = "message.txt"
     night_reader = BrailleFileIo.new(input, output)
     assert_instance_of BrailleFileIo, night_reader
+    require "pry"; binding.pry
   end
 
-  def test_case_name
-
-  end
 end
