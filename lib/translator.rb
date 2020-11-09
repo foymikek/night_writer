@@ -6,4 +6,8 @@ class Translator
   def initialize
     @dictionary = Dictionary.new.braille_index
   end
+
+  def translate(eng_char_str)
+    @dictionary[eng_char_str]
+  end
 end
