@@ -20,9 +20,12 @@ class Translator
   def char_translate(eng_char_str)
     @dictionary[eng_char_str]
   end
+  def braille_columns(input_message)
+    translate_sentence(sentence_to_letters(input_message)).transpose
+  end
 
   def translate(input_message)
-    translate_sentence(sentence_to_letters(input_message)).transpose
+    braille_columns(input_message)
   end
 
 
