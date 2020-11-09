@@ -31,6 +31,10 @@ class Translator
     end
   end
 
+  def display_columns(input_message)
+    stack_columns(input_message).join("").gsub(",", "")
+  end
+
   def translate(input_message)
     braille_columns(input_message)
     stack_columns(input_message)
