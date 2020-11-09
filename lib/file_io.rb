@@ -4,6 +4,8 @@ class FileIo
   def initialize(input, output)
     @input = input
     @output = output
+    read
+    write
   end
 
   def read
@@ -11,6 +13,13 @@ class FileIo
     raw_text = handle.read.chomp
     handle.close
     @input = raw_text
+  end
+
+  def write
+    writer = File.open(@output, "w")
+    writer.write(@input)
+    writer.close
+    puts "Created #{@output} containing #{@input.length} characters"
   end
 
 end
