@@ -25,7 +25,7 @@ class FileIo
   end
 
   def character_guard
-    @input.scan(/.{1,80}/).map do |text|
+    @input.scan(/.{1,40}/).map do |text|
       Translator.new.translate(text)
     end.join("\n")
   end
