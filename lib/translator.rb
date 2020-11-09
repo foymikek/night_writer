@@ -25,6 +25,12 @@ class Translator
     translate_sentence(sentence_to_letters(input_message)).transpose
   end
 
+  def stack_columns(input_message)
+    braille_columns(input_message).map do |column|
+      column.join(",") + "\n"
+    end
+  end
+
   def translate(input_message)
     braille_columns(input_message)
   end
