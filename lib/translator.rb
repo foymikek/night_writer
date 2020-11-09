@@ -15,4 +15,10 @@ class Translator
     sentence_str.split(//)
   end
 
+  def translate_sentence(letter_array)
+    letter_array.map do |letter|
+      translate(letter)
+    end
+  end
+
 end

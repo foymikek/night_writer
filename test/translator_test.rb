@@ -49,4 +49,10 @@ class TranslatorTest < Minitest::Test
     expected = ['a', 'b', 'c', ' ', 'd', 'e', 'f', ' ', 'g', 'h']
     assert_equal expected, translator.sentence_to_letters("abc def gh")
   end
+
+  def test_tranlator_can_translate_a_sentence
+    translator = Translator.new
+    expected = [["0.", "..", ".."], ["0.", "0.", ".."], ["..", "..", ".."], ["00", ".0", ".."]]
+    assert_equal expected, translator.translate_sentence(["a", "b", " ", "d"])
+  end
 end
