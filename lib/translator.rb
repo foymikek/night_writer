@@ -10,4 +10,5 @@ class Translator
   def translate(eng_char_str)
     @dictionary[eng_char_str]
   end
+
 end

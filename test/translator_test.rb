@@ -43,4 +43,10 @@ class TranslatorTest < Minitest::Test
     translator = Translator.new
     assert_equal ["0.", "..", ".."], translator.translate("a")
   end
+
+  def test_translator_can_split_phrase_into_letters
+    translator = Translator.new
+    expected = ['a', 'b', 'c', ' ', 'd', 'e', 'f', ' ', 'g', 'h']
+    assert_equal expected, translator.sentence_to_letters("abc def gh")
+  end
 end
