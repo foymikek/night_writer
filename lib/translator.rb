@@ -7,10 +7,6 @@ class Translator
     @dictionary = Dictionary.new.braille_index
   end
 
-  def char_translate(eng_char_str)
-    @dictionary[eng_char_str]
-  end
-
   def sentence_to_letters(sentence_str)
     sentence_str.split(//)
   end
@@ -20,5 +16,10 @@ class Translator
       char_translate(letter)
     end
   end
+  def char_translate(eng_char_str)
+    @dictionary[eng_char_str]
+  end
+
+
 
 end

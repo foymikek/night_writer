@@ -55,4 +55,10 @@ class TranslatorTest < Minitest::Test
     expected = [["0.", "..", ".."], ["0.", "0.", ".."], ["..", "..", ".."], ["00", ".0", ".."]]
     assert_equal expected, translator.translate_sentence(["a", "b", " ", "d"])
   end
+
+  def test_translator_can_stack_sentence_into_columns
+    translator = Translator.new
+    expected = [["0.", "0.", "..", "00"], ["..", "0.", "..", ".0"], ["..", "..", "..", ".."]]
+    assert_equal expected, translator.translate("ab d")
+  end
 end
