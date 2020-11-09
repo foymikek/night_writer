@@ -26,4 +26,10 @@ class BrailleTranslator
     linear_braille(input).scan(/.{6}/)
   end
 
+  def nest_braille_symbols(braille_array, input)
+    seperate_braille(input).map do |braille_symbol|
+      [braille_symbol]
+    end
+  end
+
 end

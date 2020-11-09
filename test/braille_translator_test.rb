@@ -60,9 +60,10 @@ class BrailleTranslatorTest < Minitest::Test
 
   def test_translator_can_nest_braille_symbols
     braille_translator = BrailleTranslator.new
-    input = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."]
-    expected = []
-    assert_equal expected, braille_translator.nest_braille_symbols(input)
+    braille_array = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."]
+    input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
+    expected = [["0.00.."], ["0..0.."], ["0.0.0."], ["0.0.0."], ["0..00."], ["......"], [".000.0"], ["0..00."], ["0.000."], ["0.0.0."], ["00.0.."]]
+    assert_equal expected, braille_translator.nest_braille_symbols(braille_array, input)
   end
 
 end
