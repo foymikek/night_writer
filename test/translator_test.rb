@@ -69,4 +69,10 @@ class TranslatorTest < Minitest::Test
     assert_equal expected, translator.stack_columns("ab d")
   end
 
+  def test_tranlator_can_display_columns
+    translator = Translator.new
+    expected = "0.0...00\n..0....0\n........\n"
+    assert_equal expected, translator.display_columns("ab d")
+  end
+
 end

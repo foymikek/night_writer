@@ -33,6 +33,7 @@ class Translator
 
   def translate(input_message)
     braille_columns(input_message)
+    stack_columns(input_message)
   end
 
 end
