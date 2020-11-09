@@ -61,4 +61,12 @@ class TranslatorTest < Minitest::Test
     expected = [["0.", "0.", "..", "00"], ["..", "0.", "..", ".0"], ["..", "..", "..", ".."]]
     assert_equal expected, translator.braille_columns("ab d")
   end
+
+  def test_tranlator_can_stack_braille_columns
+    translator = Translator.new
+
+    expected = ["0.,0.,..,00\n", "..,0.,..,.0\n", "..,..,..,..\n"]
+    assert_equal expected, translator.stack_columns("ab d")
+  end
+
 end
