@@ -41,7 +41,7 @@ class TranslatorTest < Minitest::Test
 
   def test_translator_can_translate_eng_char_to_braille
     translator = Translator.new
-    assert_equal ["0.", "..", ".."], translator.translate("a")
+    assert_equal ["0.", "..", ".."], translator.char_translate("a")
   end
 
   def test_translator_can_split_phrase_into_letters

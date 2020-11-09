@@ -7,7 +7,7 @@ class Translator
     @dictionary = Dictionary.new.braille_index
   end
 
-  def translate(eng_char_str)
+  def char_translate(eng_char_str)
     @dictionary[eng_char_str]
   end
 
@@ -17,7 +17,7 @@ class Translator
 
   def translate_sentence(letter_array)
     letter_array.map do |letter|
-      translate(letter)
+      char_translate(letter)
     end
   end
 
