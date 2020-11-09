@@ -1,1 +1,2 @@
-this is saved to my input attribute
+a
+ruby ./lib/night_writer.rb message.txt braille.txt

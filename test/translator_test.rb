@@ -38,4 +38,9 @@ class TranslatorTest < Minitest::Test
       }
     assert_equal expected, translator.dictionary
   end
+
+  def test_translator_can_translate_eng_char_to_braille
+    translator = Translator.new
+    assert_equal ["0.", "..", ".."], translator.translate("a")
+  end
 end
