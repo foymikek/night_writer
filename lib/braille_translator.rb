@@ -7,10 +7,10 @@ class BrailleTranslator
     @dictionary = Dictionary.new.braille_index
   end
 
-  def linear_braille(stacked_braille)
-    columns = stacked_braille.split("\n")
+  def linear_braille(input)
+    columns = input.split("\n")
     braille_segments = []
-    braille_symbol_count(stacked_braille).times do
+    braille_symbol_count(input).times do
      columns.each do |string|
        braille_segments << [string.slice!(0..1)]
      end
@@ -18,8 +18,12 @@ class BrailleTranslator
    braille_segments.join
   end
 
-  def braille_symbol_count(stacked_braille)
-    (stacked_braille.split[0].length)/2
+  def braille_symbol_count(input)
+    (input.split[0].length)/2
+  end
+
+  def seperate_braille(input)
+    linear_braille(input).scan(/.{6}/)
   end
 
 end

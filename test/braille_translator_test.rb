@@ -51,4 +51,11 @@ class BrailleTranslatorTest < Minitest::Test
     assert_equal 11, braille_translator.braille_symbol_count(input)
   end
 
+  def test_isolate_braille_symbols
+    braille_translator = BrailleTranslator.new
+    input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
+    expected = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."]
+    assert_equal expected, braille_translator.seperate_braille(input)
+  end
+
 end
