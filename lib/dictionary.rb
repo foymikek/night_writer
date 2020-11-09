@@ -33,5 +33,14 @@ class Dictionary
       }
   end
 
+  def invert
+    char_index = @braille_index.invert
+    char_index_dictionary = {}
+    char_index.each do |braille, letter|
+      char_index_dictionary[[braille.join(" ").gsub(/\s+/, "")]] = letter
+    end
+    char_index_dictionary
+  end
+
 
 end
