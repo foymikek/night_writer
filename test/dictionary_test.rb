@@ -37,4 +37,11 @@ class DictionaryTest < Minitest::Test
 
     assert_equal expected, dictionary.braille_index
   end
+
+  def test_dictionary_can_invert_for_english_translation
+    dictionary = Dictionary.new
+    expected = {["0....."]=>"a", ["0.0..."]=>"b"}
+    assert_equal expected, dictionary.invert
+  end
+
 end

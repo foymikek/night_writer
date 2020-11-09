@@ -1,6 +1,6 @@
 class Dictionary
   attr_reader :braille_index
-  
+
   def initialize
     @braille_index = {
       "a" => ["0.", "..", ".."],
@@ -32,4 +32,6 @@ class Dictionary
       " " => ["..", "..", ".."]
       }
   end
+
+
 end

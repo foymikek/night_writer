@@ -9,4 +9,8 @@ class BrailleFileIoTest < Minitest::Test
     night_reader = BrailleFileIo.new(input, output)
     assert_instance_of BrailleFileIo, night_reader
   end
+
+  def test_case_name
+
+  end
 end
