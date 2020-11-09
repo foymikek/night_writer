@@ -6,8 +6,6 @@ class FileIoTest < Minitest::Test
   def test_it_exists
     input = "message_test1.txt"
     output =  "dummy_test_file.txt"
-    ARGV[0] = input
-    ARGV[1] = output
     file_io = FileIo.new(input, output)
     assert_instance_of FileIo, file_io
   end
