@@ -19,9 +19,15 @@ class FileIo
 
   def write
     writer = File.open(@output, "w")
-    writer.write(Translator.new.translate(@input))
+    writer.write(character_guard)
     writer.close
     puts "Created #{@output} containing #{@input.length} characters"
+  end
+
+  def character_guard
+    @input.scan(/.{1,80}/).map do |text|
+      Translator.new.translate(text)
+    end.join("\n")
   end
 
 end

@@ -13,7 +13,7 @@ class FileIoTest < Minitest::Test
   end
 
   def test_file_io_can_read_txt_file
-    input = "message_test1.txt"
+    input = "message_test_z.txt"
     output   = "dummy_test_file.txt"
     file_io = FileIo.new(input, output)
     assert_equal "this is saved to my input attribute", file_io.input
