@@ -1,3 +1,5 @@
+require './lib/translator'
+
 class FileIo
   attr_reader :input, :output
 
@@ -17,7 +19,7 @@ class FileIo
 
   def write
     writer = File.open(@output, "w")
-    writer.write(@input)
+    writer.write(Translator.new.translate(@input))
     writer.close
     puts "Created #{@output} containing #{@input.length} characters"
   end
