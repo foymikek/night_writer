@@ -1,9 +1,13 @@
+require "./lib/braille_translator"
+
 class BrailleFileIo
   attr_reader :input, :output
 
   def initialize(input, output)
     @input = input
     @output = output
+    read
+    write
   end
 
   def read
@@ -14,7 +18,13 @@ class BrailleFileIo
   end
 
   def organize_message
-    BrailleFileIo.new.translate(@input).scan(/.{1,80}/)+"\n"
-    require "pry"; binding.pry
+    BrailleTranslator.new.translate(@input).scan(/.{1,80}/)+"\n"
+  end
+
+  def write
+    output = File.open(@output, "w")
+    count = (output.write(BrailleTranslator.new.translate(@input))).count
+    puts "Created '#{@output}' containing #{count} characters."
+    output.close
   end
 end

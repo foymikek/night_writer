@@ -37,4 +37,5 @@ class BrailleTranslator
       @dictionary_inverted[braille]
     end.join("")
   end
+
 end
