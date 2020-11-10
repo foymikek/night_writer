@@ -1,10 +1,10 @@
 require "./lib/dictionary"
 
 class BrailleTranslator
-  attr_reader :dictionary
+  attr_reader :dictionary_inverted
 
   def initialize
-    @dictionary = Dictionary.new.braille_index
+    @dictionary_inverted = Dictionary.new.invert
   end
 
   def linear_braille(input)
@@ -26,10 +26,15 @@ class BrailleTranslator
     linear_braille(input).scan(/.{6}/)
   end
 
-  def nest_braille_symbols(braille_array, input)
+  def nest_braille_symbols(input)
     seperate_braille(input).map do |braille_symbol|
       [braille_symbol]
     end
   end
 
+  def translate(input)
+     nest_braille_symbols(input).map do |braille|
+      @dictionary_inverted[braille]
+    end.join("")
+  end
 end

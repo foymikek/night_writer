@@ -7,35 +7,35 @@ class BrailleTranslatorTest < Minitest::Test
     braille_translator = BrailleTranslator.new
     assert_instance_of BrailleTranslator, braille_translator
     expected = {
-      "a" => ["0.", "..", ".."],
-      "b" => ["0.", "0.", ".."],
-      "c" => ["00", "..", ".."],
-      "d" => ["00", ".0", ".."],
-      "e" => ["0.", ".0", ".."],
-      "f" => ["00", "0.", ".."],
-      "g" => ["00", "00", ".."],
-      "h" => ["0.", "00", ".."],
-      "i" => [".0", "0.", ".."],
-      "j" => [".0", "00", ".."],
-      "k" => ["0.", "..", "0."],
-      "l" => ["0.", "0.", "0."],
-      "m" => ["00", "..", "0."],
-      "n" => ["00", ".0", "0."],
-      "o" => ["0.", ".0", "0."],
-      "p" => ["00", "0.", "0."],
-      "q" => ["00", "00", "0."],
-      "r" => ["0.", "00", "0."],
-      "s" => [".0", "0.", "0."],
-      "t" => [".0", "00", "0."],
-      "u" => ["0.", "..", "00"],
-      "v" => ["0.", "0.", "00"],
-      "w" => [".0", "00", ".0"],
-      "x" => ["00", "..", "00"],
-      "y" => ["00", ".0", "00"],
-      "z" => ["0.", ".0", "00"],
-      " " => ["..", "..", ".."]
-      }
-    assert_equal expected, braille_translator.dictionary
+      ["0....."]=>"a",
+      ["0.0..."]=>"b",
+      ["00...."]=>"c",
+      ["00.0.."]=>"d",
+      ["0..0.."]=>"e",
+      ["000..."]=>"f",
+      ["0000.."]=>"g",
+      ["0.00.."]=>"h",
+      [".00..."]=>"i",
+      [".000.."]=>"j",
+      ["0...0."]=>"k",
+      ["0.0.0."]=>"l",
+      ["00..0."]=>"m",
+      ["00.00."]=>"n",
+      ["0..00."]=>"o",
+      ["000.0."]=>"p",
+      ["00000."]=>"q",
+      ["0.000."]=>"r",
+      [".00.0."]=>"s",
+      [".0000."]=>"t",
+      ["0...00"]=>"u",
+      ["0.0.00"]=>"v",
+      [".000.0"]=>"w",
+      ["00..00"]=>"x",
+      ["00.000"]=>"y",
+      ["0..000"]=>"z",
+      ["......"]=>" "
+    }
+    assert_equal expected, braille_translator.dictionary_inverted
   end
 
   def test_linear_braille
@@ -60,10 +60,16 @@ class BrailleTranslatorTest < Minitest::Test
 
   def test_translator_can_nest_braille_symbols
     braille_translator = BrailleTranslator.new
-    braille_array = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.", "......", ".000.0", "0..00.", "0.000.", "0.0.0.", "00.0.."]
     input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
     expected = [["0.00.."], ["0..0.."], ["0.0.0."], ["0.0.0."], ["0..00."], ["......"], [".000.0"], ["0..00."], ["0.000."], ["0.0.0."], ["00.0.."]]
-    assert_equal expected, braille_translator.nest_braille_symbols(braille_array, input)
+    assert_equal expected, braille_translator.nest_braille_symbols(input)
+  end
+
+  def test_translate
+    braille_translator = BrailleTranslator.new
+
+    input = "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n"
+    assert_equal "hello world", braille_translator.translate(input)
   end
 
 end
