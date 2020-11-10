@@ -14,6 +14,7 @@ class Translator
   end
 
   def braille_columns(input_message)
+    # require "pry"; binding.pry
     translate_sentence(sentence_to_letters(input_message)).transpose
   end
 
