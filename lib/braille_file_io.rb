@@ -23,7 +23,7 @@ class BrailleFileIo
 
   def write
     output = File.open(@output, "w")
-    count = (output.write(BrailleTranslator.new.translate(@input))).count
+    count = output.write(BrailleTranslator.new.translate(@input))
     puts "Created '#{@output}' containing #{count} characters."
     output.close
   end
