@@ -1,6 +1,4 @@
-source 'https://rubygems.org'
-gem 'rspec'
-gem 'pry'
-gem 'mocha'
-gem 'simplecov', require: false, group: :test
-gem 'minitest'
+# frozen_string_literal: true
+source "https://rubygems.org"
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+# gem "rails"
