@@ -17,10 +17,6 @@ class BrailleFileIo
     @input = raw_braille
   end
 
-  def organize_message
-    BrailleTranslator.new.translate(@input).scan(/.{1,80}/)+"\n"
-  end
-
   def write
     output = File.open(@output, "w")
     count = output.write(BrailleTranslator.new.translate(@input))
